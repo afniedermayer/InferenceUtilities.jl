@@ -9,7 +9,9 @@ export @isinferred_noneval, @isinferred, @return_types
 Checks whether the call expression `f(x)` is type stable without evaluating `f`
 (but it does evaluate the argument(s) x) and returns a boolean value.
 `@isinferred` is similar to `@inferred`, but does not evaluate `f` and returns
-a boolean rather than throwing an exception.
+a boolean rather than throwing an exception. It also does not capture some
+corner cases that `@inferred` (and hence `@isinferred`, which is built on
+`@inferred`, captures).
 This macro is useful for unit tests (`@test @isinferred_noneval f(x)`).
 
 `f(x)` can be any call expression.
