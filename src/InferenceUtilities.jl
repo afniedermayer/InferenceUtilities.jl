@@ -1,6 +1,8 @@
 module InferenceUtilities
 using Base.Test
 
+export @isinferred_noneval, @isinferred, @return_types
+
 """
     @isinferred_noneval f(x)
 
@@ -88,7 +90,7 @@ false
 macro isinferred(ex)
     quote
         try
-            @inferred $ex
+            @inferred $(esc(ex))
             true
         catch err
             isa(err, ErrorException) ? false : rethrow(err)
