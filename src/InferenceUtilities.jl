@@ -96,7 +96,6 @@ macro isinferred(ex)
             true
         catch err
             isa(err, ErrorException) ? false : rethrow(err)
-            false
         end
     end
 end
